@@ -1,5 +1,12 @@
 <body>
 	<script>
+	u_i = prompt()
+	if(u_i == "1"){
+		file_name = "run_3.swf"
+	}
+	if(u_i == "2"){file_name = "learn_to_fly_2.swf"}
+	
+	
     window.RufflePlayer = window.RufflePlayer || {};
     window.addEventListener("load", (event) => {
         const ruffle = window.RufflePlayer.newest();
@@ -8,7 +15,7 @@
 		player.style.height = "768px";
         const container = document.getElementById("container");
         container.appendChild(player);
-        player.load("run_3.swf");
+        player.load(file_name);
     });
 </script>
 	<div id="container"></div>
