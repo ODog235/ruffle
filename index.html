@@ -1,36 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>Ruffle Player</title>
+</head>
 <body>
-	<script>
-	text = `
- 	1: un 3 (Medium Performance)
-  	2: earn to fly 2 (Great Performance)
-   	3: ireboy and atergirl in The ight emple
-    	4: ireboy & atergirl - The orest emple
-     	5: earn to fly 3
-        6: earn to fly 1
-   	Tip: Right-click on the window to bring up some options, such as fullscreen.
- 	`
-	u_i = prompt(text)
-	if(u_i == "1"){
-		file_name = "run_3.swf"
-	}
-	if(u_i == "2"){file_name = "learn_to_fly_2.swf"}
-	if(u_i == "3"){file_name = "Fireboy and Watergirl in The Light Temple.swf"}
-	if(u_i == "4"){file_name = "Fireboy & Watergirl - The Forest Temple.swf"}
-	if(u_i == "5"){file_name = "learn-to-fly-3.swf"}
-	if(u_i == "6"){file_name = "learn-to-fly.swf"}
-	
-    window.RufflePlayer = window.RufflePlayer || {};
-    window.addEventListener("load", (event) => {
-        const ruffle = window.RufflePlayer.newest();
-        const player = ruffle.createPlayer();
-		player.style.width = "1024px";
-		player.style.height = "768px";
-        const container = document.getElementById("container");
-        container.appendChild(player);
-        player.load(file_name);
-    });
-</script>
-	<div id="container"></div>
+    <script>
+        const text = `
+	*Note some web scrapers look for keywords
+        1: un 3 (Medium Performance)
+        2: earn to ly 2 (Great Performance)
+        3: ireboy and atergirl in The ight emple
+        4: ireboy & atergirl - The orest emple
+        5: earn to ly 3
+        6: earn to ly 1
+        Tip: Right-click on the window to bring up some options, such as fullscreen.
+        `;
+        const userInput = prompt(text);
+        let fileName = ""; // Default file name
+        switch (userInput) {
+            case "1":
+                fileName = "run_3.swf";
+                break;
+            case "2":
+                fileName = "learn_to_fly_2.swf";
+                break;
+            case "3":
+                fileName = "Fireboy and Watergirl in The Light Temple.swf";
+                break;
+            case "4":
+                fileName = "Fireboy & Watergirl - The Forest Temple.swf";
+                break;
+            case "5":
+                fileName = "learn-to-fly-3.swf";
+                break;
+            case "6":
+                fileName = "learn-to-fly.swf";
+                break;
+            default:
+                alert("Invalid option. Please reload the page and try again.");
+                break;
+        }
+
+        if (fileName) {
+            window.RufflePlayer = window.RufflePlayer || {};
+            window.addEventListener("load", () => {
+                const ruffle = window.RufflePlayer.newest();
+                const player = ruffle.createPlayer();
+                player.style.width = "1024px";
+                player.style.height = "768px";
+                const container = document.getElementById("container");
+                container.appendChild(player);
+                player.load(fileName);
+            });
+        }
+    </script>
+    <div id="container" style="text-align: center; max-width: 100%; max-height: 100%;"></div>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 </body>
 </html>
-<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
